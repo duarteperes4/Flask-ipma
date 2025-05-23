@@ -34,8 +34,8 @@ def _mapa_icones():
         return []
     
 # Dicionarios globais para cidades e icones
-CIDADES= _mapa_cidades()
-ICONES= _mapa_icones()
+CIDADES = _mapa_cidades()
+ICONES = _mapa_icones()
 
 def previsao_por_cidade(nome_cidade):
     """
@@ -59,7 +59,7 @@ def previsao_por_cidade(nome_cidade):
         print (f"Erro ao obter a previsão: {e}")
         raise
     
-   for d in dados
+    for d in dados: 
         try:
             # Obter o tipo de tempo e mapear para a descrição e icone
             weather_type = int(d.get("idweatherType", 0))

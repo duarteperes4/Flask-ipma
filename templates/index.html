@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<form class="cartao" action="{{ url_for('resultado.html') }}" method="get">
+    <label for="cidade">Cidade</label>
+    <input type="text" id="cidade" name="cidade" required>
+    <button type="submit">Ver tempo</button>
+</form>
+{% endblock %}
