@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>(% block titulo %) IPMA (% endblock %)</title>
+    <title>{% block titulo %}IPMA{% endblock %} </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-   {% with mensagem = get_flashed_messages(with_categories=True) %}
-    {% for cat, msg in mensagem %}
-        <p class="flash {{ cat }}">{{ msg }}</p>
-    {% endfor %}
-{% endwith %}
+    {% with mensagem = get_flashed_messages(with_categories=True)%}
+        {% for cat, msg in mensagens %}
+            <p class="flash{{ cat }}">{{msg}}</p>
+        {% endfor %}
+    {% endwith %}
 
-{% block conteudo %}{% endblock %}
-
+    <main>{% block conteudo %}{% endblock %}</main>
+    
 </body>
 </html>

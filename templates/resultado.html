@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block titulo %}{{cidade.title()}} - Previsão do Tempo{% endblock %} 
+
+{% block conteudo %}
+    <h2>Previsão do tempo para {{ cidade.title()}}</h2>
+    <form action="{{ url_for('resultado')}}" method="GET" class="cartao">
+        <label for="cidade">Pesquisar outra cidade:</label>
+        <input type="text" id="cidade" name="cidade" placeholder="Escreva o nome da cidade" required>
+        <button type="submit">Pesquisar</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Temp. Mínima</th>
+                <th>Temp. Máxima</th>
+                <th>Condição</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for d in dias %}
+                <tr>         
+                    <td>{{ d.forecastDate }}</td>
+                    <td class="temp">{{ d.tMin }}</td>
+                    <td class="temp">{{ d.tMax }}</td>
+                    <td class="condicao">
+                        <img src="{{ url_for('static', filename='icons/' + d.icon_file) }}" 
+                             alt="{{ d.descricao }}"
+                             title="{{ d.descricao }}"
+                             onerror="this.onerror=null; this.src='{{icon_fallback}}';">
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <p><a href="{{ url_for('index') }}">Voltar à página principal</a></p>
+{% endblock %}
